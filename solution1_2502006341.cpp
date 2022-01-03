@@ -30,8 +30,9 @@ struct tnode *newData(char value[10]){
 } 
 
 void insert(char value[10]){ 
-    struct tnode *N_Data = newData(value); 
+    struct tnode *N_Data =  newData(value); 
     int key = hashing(value);
+    N_Data = ND[key];
     int step = 0;
     if(!ND[key]) { 
         strcpy(ND[key]->value, value);
