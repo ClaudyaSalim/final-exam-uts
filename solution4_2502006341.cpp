@@ -120,7 +120,23 @@ void priorityPush(int date, int month, int year, char *name) {
 }
 
 void popHead() { 
-    // [3] INSERT YOUR CODE HERE 
+    // [3] INSERT YOUR CODE HERE
+    if(head == NULL){
+        return;
+    }
+    else if(head == tail){
+        head->next = NULL;
+        head->prev = NULL;
+        free(head);
+        head = tail = NULL;
+    }
+    else{
+        struct data *temp = head;
+        head = head->next;
+        head->prev = NULL;
+        temp->next = NULL;
+        free(temp);
+    } 
 }
 
 int main() { 
@@ -137,6 +153,6 @@ int main() {
         printf("Need %d more cure\n", totalPatients-totalCure); 
  
     printAll(); 
-    // popAll(); 
+    popAll(); 
 } 
 
